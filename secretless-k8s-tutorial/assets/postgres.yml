@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pg
+  labels:
+    app: postgres-backend
+spec:
+  serviceName: postgres-backend
+  selector:
+    matchLabels:
+      app: postgres-backend
+  template:
+    metadata:
+      labels:
+        app: postgres-backend
+    spec:
+      securityContext:
+        fsGroup: 999
+      containers:
+      - name: postgres-backend
+        image: postgres:9.6
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 5432
+        env:
+          - name: POSTGRES_DB
+            value: postgres
+          - name: POSTGRES_USER
+            value: security_admin_user
+          - name: POSTGRES_PASSWORD
+            value: security_admin_password
+        volumeMounts:
+        - name: backend-certs
+          mountPath: "/etc/certs/"
+          readOnly: true
+        args: ["-c", "ssl=on", "-c", "ssl_cert_file=/etc/certs/server.crt", "-c", "ssl_key_file=/etc/certs/server.key"]
+      volumes:
+      - name: backend-certs
+        secret:
+          secretName: postgres-backend-certs
+          defaultMode: 384
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-backend
+spec:
+  selector:
+    app: postgres-backend
+  ports:
+    - port: 5432
+      targetPort: 5432
+      nodePort: 30001
+  type: NodePort

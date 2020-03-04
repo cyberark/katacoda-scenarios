@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-application
+  labels:
+    app: demo-application
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo-application
+  template:
+    metadata:
+      labels:
+        app: demo-application
+    spec:
+      serviceAccountName: demo-app-svc-account
+      automountServiceAccountToken: true
+      containers:
+        - name: demo-application
+          image: cyberark/demo-app:latest
+          env:
+            - name: DB_URL
+              value: postgresql://localhost:5432/demo_app_db?sslmode=disable
+        - name: secretless-broker
+          image: cyberark/secretless-broker:latest
+          imagePullPolicy: Always
+          args: ["-f", "/etc/secretless/secretless.yml"]
+          volumeMounts:
+            - name: config
+              mountPath: /etc/secretless
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: demo-app-secretless-config
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-application
+spec:
+  selector:
+    app: demo-application
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30002
+  type: NodePort
