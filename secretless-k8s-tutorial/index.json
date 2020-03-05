@@ -11,32 +11,28 @@
         "text": "1_before_we_begin.md"
       },
       {
-        "title": "Step 2: Overview",
-        "text": "2_overview.md"
+        "title": "Step 2: Deploy PostgreSQL Database",
+        "text": "2_deploy_postgresql.md"
       },
       {
-        "title": "Step 3: Deploy PostgreSQL Database",
-        "text": "3_deploy_postgresql.md"
+        "title": "Step 3: Create Application Database and Service Account",
+        "text": "3_create_app_db.md"
       },
       {
-        "title": "Step 4: Create Application Database and Service Account",
-        "text": "4_create_app_db.md"
+        "title": "Step 4: Configure Secretless Broker",
+        "text": "4_configure_secretless.md"
       },
       {
-        "title": "Step 5: Configure Secretless Broker",
-        "text": "5_configure_secretless.md"
-      },
-      {
-        "title": "Step 6: Deploy Application",
-        "text": "6_deploy_application.md"
+        "title": "Step 5: Deploy Application",
+        "text": "5_deploy_application.md"
       },
       {
         "title": "Appendix: Secretless Deployment Manifest Explained",
-        "text": "7_secretless_manifest_explained.md"
+        "text": "6_secretless_manifest_explained.md"
       },
       {
         "title": "Conclusion",
-        "text": "8_conclusion.md"
+        "text": "7_conclusion.md"
       }
     ],
     "intro": {
