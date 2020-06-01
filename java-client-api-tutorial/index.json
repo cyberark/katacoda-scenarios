@@ -1,0 +1,111 @@
+{
+  "title": "Conjur Java Client API Tutorial",
+  "description": "The purpose of this demo is to install Conjur on a Kubernetes environment",
+  "difficulty": "Intermediate",
+  "time": "30",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1",
+        "text": "step1.md",
+  	"courseData": "courseBase.sh"
+      },
+      {
+        "title": "Step 2",
+        "text": "step2.md"
+      },
+      {
+        "title": "Step 3",
+        "text": "step3.md"
+      },
+      {
+	"title": "Step 4",
+	"text": "step4.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+          {
+            "file": "pom.xml",
+            "target": "/root/java-client-api"
+          },
+      	  {
+      	    "file": "JavaClient.java",
+      	    "target": "/root/java-client-api/src/main/java/com/cyberark/example"
+      	  },
+          {
+            "file": "Dockerfile",
+            "target": "/root/java-client-api"
+          },
+          {
+            "file": "build.sh",
+            "target": "/root/java-client-api",
+            "chmod": "+x"
+          },
+          {
+            "file": "conjur-java-api-example.yaml",
+            "target": "/root/kubernetes-install/templates"
+          },
+          {
+            "file": "custom-values.yaml",
+            "target": "/root/kubernetes-install/templates"
+          },
+	  {
+            "file": "policy-for-variables.yaml",
+            "target": "/root/kubernetes-install/templates"
+          },
+	  {
+            "file": "policy-for-webservice.yaml",
+            "target": "/root/kubernetes-install/templates"
+          },
+	  {
+            "file": "policy-hosts-to-authenticate.yaml",
+            "target": "/root/kubernetes-install/templates"
+          },
+          {
+            "file": "cert_script.sh",
+            "target": "/root/kubernetes-install/conjur_scripts",
+            "chmod": "+x"
+          },
+          {
+            "file": "conjur-cert.pem",
+            "target": "/root/kubernetes-install"
+          },
+          {
+            "file": "conjur-cli.yaml",
+            "target": "/root/kubernetes-install"
+          },
+          {
+            "file": "conjur-java-api-example.yaml",
+            "target": "/root/kubernetes-install"
+          },
+          {
+            "file": "docker-compose.yml",
+            "target": "/root/kubernetes-install"
+          },
+          {
+            "file": "installer.sh",
+            "target": "/root/kubernetes-install",
+            "chmod": "+x"
+          },
+          {
+            "file": "java-client-installer.sh",
+            "target": "/root/kubernetes-install",
+            "chmod": "+x"
+          }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "minikube"
+  }
+}
