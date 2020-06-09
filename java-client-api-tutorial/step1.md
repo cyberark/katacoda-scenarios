@@ -14,7 +14,7 @@ Desktop  helm-v3.2.1-linux-amd64.tar.gz  java-client-api  kubernetes-install  li
      ```
    </details>
 
-2. Start minikube
+<!-- 2. Start minikube
 
    `minikube start
    `{{execute}}
@@ -34,9 +34,9 @@ Desktop  helm-v3.2.1-linux-amd64.tar.gz  java-client-api  kubernetes-install  li
  * Waiting for cluster to come online ...
  * Done! kubectl is now configured to use "minikube"
      ```
-   </details>
+   </details> -->
 
-3. Run the build script to build the Conjur Java Client API.
+1. Run the build script to build the Conjur Java Client API.
 
    We have built a Dockerfile to create the Java Client Jar for you.
 

@@ -1,8 +1,14 @@
 # Installing and setting up Conjur-OSS
 
-In this section, we will set our environmental variables to be used in development, create our kubernetes namespace, pull the Conjur docker image from Docker Hub, create our data key, and start our Conjur-CLI, Conjur-OSS and Conjur-OSS-Postgres containers.
+In this section, we will create our kubernetes namespace, pull the Conjur docker image from Docker Hub, create our data key, and start our Conjur-CLI, Conjur-OSS and Conjur-OSS-Postgres containers.
 
-1. Setting the necessary variables
+Some environment variables have been preset for the use of this tutorials:
+* PROJECT_NAME
+* ACCOUNT_NAME
+* AUTHENTICATOR
+* DEPLOYMENT_NAME
+
+<!-- 1. Setting the necessary variables
 
    So we can refer to them later, export the project name, account name, authenticator and deployment name as environment variables:
 
@@ -10,17 +16,9 @@ In this section, we will set our environmental variables to be used in developme
 export ACCOUNT_NAME=demo-account
 export AUTHENTICATOR=demo-authenticator
 export DEPLOYMENT_NAME=conjur-java-api-example
-   `{{execute}}
+   `{{execute}} -->
 
-2. **If you would like to continue with the tutorial, please skip this step.**
-
-    We have provided a script in `kubernetes-install/java-client-installer` which will install and configure the necessary pods to run the Conjur Java Client API. If you would like to use that script, you can do so with the following command:
-
-    `cd
-cd kubernetes-install
-./java-client-installer.sh --project-name $PROJECT_NAME --account-name $ACCOUNT_NAME --authenticator $AUTHENTICATOR`{{execute}}
-
-3. Create and set the environment namespace
+1. Create and set the environment namespace
 
     `cd ..
 cd kubernetes-install
@@ -36,7 +34,7 @@ Context "minikube" modified.
       ```
     </details>
 
-4. Pull the latest version of Conjur from Docker Hub
+2. Pull the latest version of Conjur from Docker Hub
 
     `docker pull cyberark/conjur:latest`{{execute}}
 
@@ -51,7 +49,7 @@ docker.io/cyberark/conjur:latest
     ```
   </details>
 
-5. Generate a data key
+3. Generate a data key
 
     `DATA_KEY=$( docker-compose run --no-deps --rm conjur data-key generate )`{{execute}}
 
@@ -62,19 +60,19 @@ docker.io/cyberark/conjur:latest
       ```
     </details>
 
-6. Generate template for Conjur-OSS using environmental variables
+4. Generate template for Conjur-OSS using environmental variables
 
     `cat templates/custom-values.yaml | sed s/'{{ AUTHENTICATOR }}'/$AUTHENTICATOR/g | sed s/'{{ ACCOUNT_NAME }}'/$ACCOUNT_NAME/g > custom-values.yaml.tmp
 cat custom-values.yaml.tmp | awk "{gsub(/{{ DATA_KEY }}/,\"$DATA_KEY\")}1" > custom-values.yaml
 rm -rf custom-values.yaml.tmp
     `{{execute}}
 
-7. Install Conjur-OSS via helm
+5. Install Conjur-OSS via helm
 
    `helm install conjur-oss --namespace $PROJECT_NAME -f custom-values.yaml  https://github.com/cyberark/conjur-oss-helm-chart/releases/download/v1.3.8/conjur-oss-1.3.8.tgz
    `{{execute}}
 
-8. Check pod status
+6. Check pod status
 
    `kubectl get pods`{{execute}}
 
@@ -87,7 +85,7 @@ conjur-oss-postgres-86bcdbff6c-gzgpq   1/1     Running   0          101s
      ```
    </details>
 
-9. Create an account
+7. Create an account
 
    `CONJUR_OSS_POD_LINE=$( kubectl get pods | grep conjur-oss | (head -n1 && tail -n1) )
 CONJUR_OSS_POD=$( echo "$CONJUR_OSS_POD_LINE" | awk '{print $1}' )
@@ -102,11 +100,9 @@ API_KEY=$( echo "$CONJUR_OUTPUT_INIT" |  grep "API key" | awk '{print $5}' )
      ```
    </details>
 
-10. Create Conjur-CLI pod
+8. Create Conjur-CLI pod
 
-    `
-kubectl create -f conjur-cli.yaml
-    `{{execute}}
+    `kubectl create -f conjur-cli.yaml`{{execute}}
 
     <details>
       <summary>Click here to see expected output...</summary>
@@ -115,7 +111,7 @@ kubectl create -f conjur-cli.yaml
       ```
     </details>
 
-11. Check pod status
+9. Check pod status
 
    `kubectl get pods`{{execute}}
 
