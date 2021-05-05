@@ -2,8 +2,6 @@
 
 Note: _this repo is a work in progress_
 
-Visit the [CyberArk Katacoda page](https://katacoda.com/cyberark) to
- view the profile and interactive scenarios
 
 ## Writing Scenarios
 
