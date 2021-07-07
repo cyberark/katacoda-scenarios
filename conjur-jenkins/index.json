@@ -47,7 +47,7 @@
         "text": "conjur-plugin.md"
       },
       {
-        "title": "Configure Jenkins-DAP connection",
+        "title": "Configure Jenkins-Conjur Enterprise connection",
         "text": "conjur-conn.md"
       },
       {

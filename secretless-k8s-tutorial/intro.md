@@ -9,7 +9,7 @@ In this scenario, you will get an overview of the Secretless Broker and learn ho
 ## What is Secretless Broker?
 With the Secretless Broker feature of Conjur, applications can securely connect to databases, services and other protected resources – without fetching or managing secrets.
 
-Secretless Broker is an independent and extensible open source community project maintained by CyberArk.  Today Secretless Broker works within Kubernetes and OpenShift container platforms with Conjur, Application Access Manager’s Dynamic Access Provider, and Kubernetes Secrets vaults.
+Secretless Broker is an independent and extensible open source community project maintained by CyberArk.  Today Secretless Broker works within Kubernetes and OpenShift container platforms with Conjur, Application Access Manager’s Conjur Enterprise, and Kubernetes Secrets vaults.
 
 <p align="center">
   <img width="300" height="300" src="https://www.conjur.org/wp-content/uploads/2019/07/secretless-arch-infographic.svg">

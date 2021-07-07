@@ -1,5 +1,5 @@
 
-The following steps define the connection to the DAP appliance. This is typically a one-time configuration.
+The following steps define the connection to the Conjur Enterprise appliance. This is typically a one-time configuration.
 
 You may need to login to Jenkins again after restart.
 Jenkins user name is `admin`{{copy}} and password is `344827fbdbfb40d5aac067c7a07b9230`{{copy}}
@@ -7,19 +7,19 @@ Jenkins user name is `admin`{{copy}} and password is `344827fbdbfb40d5aac067c7a0
 
 1. Navigate to Manage Jenkins > Manage Credentials > (global) > System > Add Credentials, the [Global credentials (unrestricted)](https://[[HOST_SUBDOMAIN]]-8081-[[KATACODA_HOST]].environments.katacoda.com//credentials/store/system/domain/_/newCredentials) page should be shown
 
-2. On the form that appears, configure the login credentials. These are credentials for the Jenkins host to log into DAP.
+2. On the form that appears, configure the login credentials. These are credentials for the Jenkins host to log into Conjur Enterprise.
 
 ![theimage](https://github.com/quincycheng/katacoda-scenarios/raw/master/conjur-jenkins/media/04-conn.PNG)
 
  - Username: `host/jenkins-frontend/frontend-01`{{copy}}
  - Password: 
 
-  Copy and paste the API key that was returned by DAP when you loaded the policy declaring this host.
+  Copy and paste the API key that was returned by Conjur Enterprise when you loaded the policy declaring this host.
   Forgot it?  No worries, execute `cat frontend.out`{{execute}} to review it
 
 3. Click Save.
 
-You can also decide whether to set up global or folder-level access to DAP, or a combination of both.
+You can also decide whether to set up global or folder-level access to Conjur Enterprise, or a combination of both.
 
 To learn more, visit [CyberArk Conjur Doc](https://docs.conjur.org/Latest/en/Content/Integrations/jenkins-configure.htm?tocpath=Integrations%7CJenkins%7C_____2#ConfigureJenkinsConjurconnection)
 
