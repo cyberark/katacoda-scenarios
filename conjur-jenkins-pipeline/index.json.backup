@@ -1,0 +1,93 @@
+{
+  "title": "WIP",
+  "description": "Learn how to configure Jenkins Conjur Credential plugin to retrieve secrets & secure Jenkins Freestyle projects",
+  "difficulty": "Intermediate",
+  "time": "15-20 minutes",
+  "icon": "fa-jenkins",
+  "details": {
+    "steps": [
+      {
+        "title": "Prerequisites",
+        "text": "prerequisites.md"
+      },
+      {
+        "title": "Log in to Jenkins",
+        "text": "jenkins-login.md"
+      },
+      {
+        "title": "Folder",
+        "text": "jenkins-demo.md"
+      },
+      {
+        "title": "Typical Freestyle",
+        "text": "jenkins-freestyle.md"
+      },
+      {
+        "title": "Build it",
+        "text": "jenkins-build.md"
+      },
+      {
+        "title": "The risk",
+        "text": "jenkins-risk.md"
+      },
+      {
+        "title": "Conjur",
+        "text": "conjur-setup.md"
+      },
+      {
+        "title": "App ID",
+        "text": "conjur-appid.md"
+      },
+      {
+        "title": "Secrets",
+        "text": "conjur-variables.md"
+      },
+      {
+        "title": "Install Plugin",
+        "text": "conjur-plugin.md"
+      },
+      {
+        "title": "Configure Jenkins-DAP connection",
+        "text": "conjur-conn.md"
+      },
+      {
+        "title": "Define secrets in Jenkins",
+        "text": "conjur-newcred.md"
+      },
+      {
+        "title": "Securing the Project",
+        "text": "conjur-project.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "courseData": "courseBase.sh",
+      "credits": ""
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+    "dashboards": [
+      {
+        "name": "Jenkins",
+        "port": 8081
+      },
+      {
+        "name": "Conjur",
+        "port": 8080
+      },
+      {
+        "name": "Target Web App",
+        "port": 80
+      }
+    ],
+    "uilayout": "terminal-iframe",
+    "uimessage1": "\u001b[32mWelcome to Conjur Jenkins tutorial.\u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "conjur-jenkins"
+  }
+}

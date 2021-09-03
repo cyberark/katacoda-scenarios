@@ -1,0 +1,15 @@
+- &variables
+  - !variable keytab
+
+- !group secrets-users
+
+- !permit
+  resource: *variables
+  privileges: [ read, execute ]
+  roles: !group secrets-users
+
+# Entitlements
+
+- !grant
+  role: !group secrets-users
+  member: !layer /frontend

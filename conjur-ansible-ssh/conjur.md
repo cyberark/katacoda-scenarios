@@ -1,6 +1,7 @@
 
-Conjur has been spinned up for you.
-Let's make sure it is up and running by accessing the web interface
+We intiated Conjur for you, now let's verify that it is complete by checking the web interface.
+
+Note:
 Please wait for a moment if it doesn't display "Your Conjur server is running!"
 
 To access the web interface:

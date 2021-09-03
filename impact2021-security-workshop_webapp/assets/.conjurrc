@@ -1,0 +1,5 @@
+---
+account: impact2021
+plugins: []
+appliance_url: https://conjur
+cert_file: "/home/cybr/conjur-impact2021.pem"

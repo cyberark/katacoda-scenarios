@@ -2,7 +2,7 @@
 
 Here comes a typical ansible playbook & inventory
 
-### inventory
+### Inventory file 
 
 First, we will need to create an inventory file about our servers
 
@@ -14,10 +14,6 @@ host02 ansible_connection=ssh ansible_host=[[HOST2_IP]] ansible_ssh_user=service
 EOF 
 ```{{execute HOST1}}
 
-### Playbook
-
-`cat insecure-playbook/insecure-playbook.yml`{{execute HOST1}}
-
-### Let's give it a try
+### Let's try the sample playbook
 
 `ansible-playbook -i insecure-playbook/inventory insecure-playbook/insecure-playbook.yml`{{execute HOST1}}

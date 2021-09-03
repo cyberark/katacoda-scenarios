@@ -1,0 +1,35 @@
+{
+  "title": "Conjur Sandbox",
+  "description": "Experiment with Kubernetes in a safe Conjur Sandbox",
+  "icon": "fa-shield-alt",
+  "details": {
+    "steps": [
+      {
+        "title": "Overview",
+        "text": "overview.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "courseData": "background.sh",
+      "code": "foreground.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+    "dashboards": [
+        {"name": "Web App", "port": 80},
+        {"name": "Conjur UI", "port": 8080}
+    ],
+    "uieditorpath": "/opt/app",
+    "idePort": 23000,
+    "uilayout": "vscode-terminal-split"
+
+  },
+  "backend": {
+    "imageid": "conjur-oss-202106"
+  }
+}

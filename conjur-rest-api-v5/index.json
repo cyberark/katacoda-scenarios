@@ -1,0 +1,44 @@
+{
+  "title": "Conjur REST API",
+  "description": "Learn how to use REST API for CyberArk Conjur",
+  "difficulty": "Beginner", 
+  "time": "15-30 mins",
+  "icon":"fa-docker",
+  "details": {
+    "steps": [
+       { "title": "Install Conjur", "text": "install.md" },
+       { "title": "Authentication as human", "text": "authn_human.md" },
+       { "title": "Load Policies", "text": "policies.md" },
+       { "title": "Secrets",  "text": "secrets.md"}
+
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": "https://www.conjur.org"
+   },
+   "assets": {
+    "client": [
+      {
+        "file": "showSettings.sh",
+        "target": "~/tutorial",
+        "chmod":"+x"
+      },
+      {
+        "file": "setupConjur.sh",
+        "target": "~/tutorial",
+        "chmod":"+x"
+      }
+    ]
+   },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "terminal",
+    "uimessage1": "\u001b[32mWelcome to this Conjur tutorial\u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "swarm"
+  }
+}

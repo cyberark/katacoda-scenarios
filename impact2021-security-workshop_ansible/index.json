@@ -1,0 +1,76 @@
+{
+  "title": "Ansible Automation & Conjur",
+  "description": "DevSecOps Security Workshop for CyberArk Impact 2021 - Ansible Automation & Conjur",
+    "difficulty": "Intermediate",
+  "time": "30-40 minutes",
+  "icon": "fa-shield-alt",
+  "details": {
+    "steps": [
+    
+      {
+        "title": "The Setup",
+        "text": "accounts.md"
+      },
+      {
+        "title": "Typical Playbook",
+        "text": "insecure-playbook.md"
+      },
+      {
+        "title": "The Risk",
+        "text": "risk.md"
+      },
+            {
+        "title": "The Plan",
+        "text": "plan.md"
+      },
+      {
+        "title": "A. Install Conjur",
+        "text": "conjur.md"
+      },
+      {
+        "title": "A. Conjur CLI",
+        "text": "conjur_cli.md"
+      },
+
+      {
+        "title": "B. Conjur Policy",
+        "text": "policy.md"
+      },
+      {
+        "title": "C. Load Policies",
+        "text": "load-policy.md"
+      },
+      {
+        "title": "D. The Secrets",
+        "text": "secrets.md"
+      },
+      {
+        "title": "E. App Identity",
+        "text": "galaxy.md"
+      },
+      {
+        "title": "Securing Playbook",
+        "text": "secure-playbook.md"
+      },
+      {
+        "title": "Risk Remediated",
+        "text": "risk2.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": "https://www.conjur.org",
+      "courseData": "background.sh",
+      "code": "foreground.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "conjur-poc-cluster-running"
+  }
+}

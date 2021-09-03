@@ -1,0 +1,34 @@
+{
+  "title": "Deploy & Test Conjur",
+  "description": "DevSecOps Security Workshop for CyberArk Impact 2021 - Deploy & Test Conjur",
+  "difficulty": "Intermediate",
+  "time": "30-40 minutes",
+  "details": {
+    "steps": [
+      { "title": "Overview", "text": "overview.md"},
+      { "title": "Install Conjur", "text": "step1.md" },
+      { "title": "Start Conjur", "text": "step2.md" },
+      { "title": "Create and load your security policy", "text": "step3.md" },
+      { "title": "Create a secret and securely vault it in Conjur", "text": "step4.md" },
+      { "title": "Creating a non-human identity", "text": "step5.md" },
+      { "title": "Testing Authentication", "text": "step6.md" },
+      { "title": "Testing Authorization", "text": "step7.md"}
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": "https://www.conjur.org",
+      "courseData": "background.sh",
+      "code": "foreground.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "files": [ "conjur.yml", "db.yml", "frontend.yml"],
+  "environment": {
+    "uilayout": "editor-terminal"
+  },
+  "backend": {
+    "imageid": "conjur-oss-202106"
+  }
+}

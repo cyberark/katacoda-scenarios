@@ -1,0 +1,57 @@
+{
+  "title": "Securing a Web App",
+  "description": "DevSecOps Security Workshop for CyberArk Impact 2021 - Securing a Web App",
+  "difficulty": "Intermediate",
+  "time": "30-40 minutes",
+  "icon": "fa-shield-alt",
+  "details": {
+    "steps": [
+      {
+        "title": "Agenda",
+        "text": "agenda.md"
+      },
+      {
+        "title": "Environment Overview",
+        "text": "env_overview.md"
+      },
+      {
+        "title": "Hard-Coded Credentials Web App",
+        "text": "insecure_app.md"
+      },
+      {
+        "title": "Securing a Web App - Authentication",
+        "text": "secure_app_authn.md"
+      },
+      {
+        "title": "Securing a Web App - Secret Retrieval",
+        "text": "secure_app_retrieve.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": "https://www.conjur.org",
+      "courseData": "background.sh",
+      "code": "foreground.sh"
+    },
+    "assets": {
+      "host01": [
+          {"file": "wait.sh", "target": "/usr/local/bin/", "chmod": "+x"}
+      ]
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+    "dashboards": [
+        {"name": "Web App", "port": 80}
+    ],
+    "uieditorpath": "/opt/app",
+    "idePort": 23000,
+    "uilayout": "vscode-terminal-split"
+  },
+  "backend": {
+    "imageid": "conjur-oss-202107"
+  }
+}

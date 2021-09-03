@@ -1,0 +1,32 @@
+{
+  "title": "Securing Kerberos Keytab using Conjur & Summon",
+  "description": "Learn how to secure Kerberos Keytab files using Conjur & Summon",
+  "icon":"fa-shield-alt",
+  "difficulty": "Beginner",
+  "time": "10-20 minutes",
+  "details": {
+    "steps": [
+      { "title": "Setup Kerberos", "text": "krb5.md" },
+      { "title": "Create User Principal & Keytab", "text": "keytab.md" },
+      { "title": "Setup Conjur", "text": "conjur.md" },
+      { "title": "Summon Keytab", "text": "summon.md" }
+
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": "https://www.conjur.org"
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+     "assets": { "host01": [ {"file": "*", "target": "/root"}, {"file": "*.sh", "target": "/root", "chmod":"+x"} ] }
+
+  },
+  "environment": {
+    "uilayout": "terminal",
+    "uimessage1": "\u001b[32mWelcome!\u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "kubernetes-cluster"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "title": "CEM Jenkins Shared Library Demo",
+  "description": "Learn how to use Jenkins Shared Library to integrate with CyberArk Cloud Entitlements Manager",
+  "difficulty": "Intermediate",
+  "time": "15-20 minutes",
+  "icon": "fa-jenkins",
+  "details": {
+    "steps": [
+      {
+        "title": "Create CEM API Key",
+        "text": "cem.md"
+      },
+      {
+        "title": "Build Jenkins Pipeline",
+        "text": "build.md"
+      },
+      {
+        "title": "Set CEM API Key",
+        "text": "setapi.md"
+      },
+      {
+        "title": "Review Logs",
+        "text": "logs.md"
+      },
+      {
+        "title": "API - Get Accounts",
+        "text": "cemGetAccounts.md"
+      },
+            {
+        "title": "API - Get Entities",
+        "text": "cemGetEntities.md"
+      },
+      {
+        "title": "API - Get Entity Details",
+        "text": "cemGetEntityDetails.md"
+      },
+            {
+        "title": "API - Get Recommendations",
+        "text": "cemGetRecommendations.md"
+      },
+            {
+        "title": "API - Get Remediations",
+        "text": "cemGetRemediations.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "courseData": "background.sh",
+      "credits": ""
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+    "dashboards": [
+      {
+         "name": "CEM", 
+         "href": "https://cem.cyberark.com/integrations/api-keys"
+      },
+      {
+        "name": "Jenkins",
+        "port": 8080
+      },
+       {
+         "name": "Pipeline Script", 
+         "href": "https://github.com/quincycheng/cem-jenkins-lib/blob/main/example/Jenkinsfile"
+      }     
+    ],
+    "uilayout": "terminal-iframe",
+    "uimessage1": "\u001b[32mWelcome to CEM Jenkins Shared Library tutorial.\u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "conjur-cem-jenkins-running"
+  }
+}

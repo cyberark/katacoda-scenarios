@@ -17,7 +17,7 @@ We will use the following configuration in this tutorial:
 | APPLICATION_SERVICE_ACCOUNT | testapp-secure-sa |
 | AUTHENTICATOR_CLIENT_CONTAINER_NAME | secretless |
 
-For details, please refer to the [Conjur offical doc](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_deployApplicationCluster.htm?tocpath=Integrations%7COpenShift%252C%20Kubernetes%7C_____4)
+For details, please refer to the [Conjur official doc](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_deployApplicationCluster.htm?tocpath=Integrations%7COpenShift%252C%20Kubernetes%7C_____4)
 
 ## Policy
 

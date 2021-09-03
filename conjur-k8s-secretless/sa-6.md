@@ -1,6 +1,6 @@
 
-The last task for the administrator is to prepare Conjur for Secretless Broker Sidecar
-Documentation can be found [here](https://docs.conjur.org/Latest/en/Content/Get%20Started/scl_using-conjur-OSS.htm?tocpath=Integrations%7COpenShift%252C%20Kubernetes%7CDeploy%20Applications%7C_____2#AddyourapplicationtoConjurpolicy)
+The last task for the administrator is to prepare Conjur for Secretless Broker Sidecar.
+Documentation can be found [here](https://docs.conjur.org/Latest/en/Content/Get%20Started/scl_using-conjur-OSS.htm?tocpath=Integrations%7COpenShift%252C%20Kubernetes%7CDeploy%20Applications%7C_____2#AddyourapplicationtoConjurpolicy).
 
 ## Review the env setup
 
@@ -23,11 +23,11 @@ The table below summarizes what we have set up so far:
 
 ## env.sh
 
-A code snippet contains all the variables defined in the table above has been prepared for you.
+A code snippet that contains all the variables defined in the table above has been prepared for you.
 To review it, execute `cat secretless/env.sh`{{execute HOST1}}
 
 ## Add your application to Conjur policy
-You can define your host using a variety of Kubernetes resources
+You can define your host using a variety of Kubernetes resources.
 Use the following bash code snippet to generate the policy, named app-policy.yml, to add your application to Kubernetes:
 
 ```

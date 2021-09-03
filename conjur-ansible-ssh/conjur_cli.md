@@ -1,8 +1,6 @@
 
-### Initlize CLI
-
-Let's configure Conjur CLI to point to the newly created Conjur.
-You only need to do it once
+Let's initialize Conjur CLI.   
+You only need to do it once.
 
 ```
 docker-compose exec client bash -c "echo yes | conjur init -u https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/ -a demo"

@@ -9,8 +9,8 @@ curl $URL/pets
 ```{{execute HOST1}}
 
 If a `curl` error is returned, that means the application is still being started.
-Please wait for a couple of moments and try again
-It should return `[]` is the application is up
+Please wait for a couple of moments and try again.
+It should return `[]` if the application is up.
 
 ## Test the app
 

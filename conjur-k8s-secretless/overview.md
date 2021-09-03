@@ -22,7 +22,6 @@ Specifically, we will:
 **As the application developer:**
 - Deploy the application and the Secretless sidecar
 
-Prerequisites
-To run through this tutorial, all you need is this course!
+This course is the only prerequisite you need to run through this tutorial!
 
 Let's get started!

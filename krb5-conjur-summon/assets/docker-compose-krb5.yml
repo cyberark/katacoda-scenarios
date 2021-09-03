@@ -1,0 +1,20 @@
+version: '3'
+volumes:
+    krb5kdc-data:
+
+services:
+   kdc:
+     build:
+       context: .
+       dockerfile: Dockerfile
+     restart: always
+     ports:
+      - "88:88"
+      - "464:464"
+      - "749:749"
+     environment:
+       KRB5_REALM: CYBERARKDEMO.COM
+       KRB5_KDC: localhost
+       KRB5_PASS: 5b1d328bc88b97356f406fab456b5a99
+     volumes:
+      - krb5kdc-data:/var/lib/krb5kdc
