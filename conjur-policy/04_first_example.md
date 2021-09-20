@@ -10,8 +10,6 @@ To implement this example, save each policy described below in a separate text f
 
 ```shell
 conjur policy load root myWebservicePolicy.yml
-
 conjur policy load root myHostPolicy.yml
-
 conjur policy load root myVariablePolicy.yml
 ```
