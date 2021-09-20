@@ -5,3 +5,5 @@ docker rm root_conjur_1
 
 cd /root
 docker-compose up -d
+
+/opt/start-vscode.sh /opt/app &

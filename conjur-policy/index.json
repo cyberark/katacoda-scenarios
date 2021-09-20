@@ -6,7 +6,47 @@
       "steps": [
         {
           "title": "Agenda",
-          "text": "agenda.md"
+          "text": "01_agenda.md"
+        },
+        {
+          "title": "Environment Overview",
+          "text": "02_env_overview.md"
+        },
+        {
+          "title": "Policy Concepts",
+          "text": "03_policy_concepts.md"
+        },
+        {
+          "title": "First Example",
+          "text": "04_first_example.md"
+        },
+        {
+          "title": "First Example - Web Service Policy",
+          "text": "05_web_service_policy.md"
+        },
+        {
+          "title": "First Example - Host Policy",
+          "text": "06_host_policy.md"
+        },
+        {
+          "title": "First Example - Variable Policy",
+          "text": "07_variable_policy.md"
+        },
+        {
+          "title": "Improving the Solution",
+          "text": "08_improving_solution.md"
+        },
+        {
+          "title": "Improving the Solution - Layer Policy",
+          "text": "09_layer_policy.md"
+        },
+        {
+          "title": "Improving the Solution - Modifying Variable Policy",
+          "text": "10_modify_variable_policy.md"
+        },
+        {
+          "title": "Closing Thoughts",
+          "text": "11_closing_thoughts.md"
         }
       ],
       "intro": {
@@ -19,7 +59,9 @@
       }
     },
     "environment": {
-      "uilayout": "terminal"
+      "uieditorpath": "/opt/app",
+      "idePort": 23000,
+      "uilayout": "vscode-terminal-split"
     },
     "backend": {
       "imageid": "conjur-oss-202107"
