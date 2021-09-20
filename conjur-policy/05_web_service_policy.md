@@ -20,6 +20,8 @@ The following webservice policy creates a resource that makes the Azure authenti
     resource: !webservice
 ```
 
+Let's explore this from the top of the policy file:
+
 <pre class="file" data-filename="myWebservicePolicy.yml" data-target="replace">- !policy
   id: conjur/authn-azure/AzureWS1
   body:
@@ -35,12 +37,10 @@ Various tags define the policy as follows:
 
 * The `!webservice` tag defines that this is a webservice resource.
 <pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">  - !webservice
-
 </pre>
 * The `!variable` tag is a variable, named `provider-uri`, that is created to contain the URL Conjur uses to access the authentication resource.
 <pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">  - !variable
     id: provider-uri
-
 </pre>
 * The `!group` tag defines the `apps` group and associates it with this policy.
 <pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">  - !group
