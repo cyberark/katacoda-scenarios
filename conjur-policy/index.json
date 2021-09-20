@@ -59,7 +59,7 @@
       }
     },
     "environment": {
-      "uieditorpath": "/opt/app",
+      "uieditorpath": "/root/policy",
       "idePort": 23000,
       "uilayout": "vscode-terminal-split"
     },
