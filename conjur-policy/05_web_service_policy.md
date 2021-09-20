@@ -40,19 +40,19 @@ Various tags define the policy as follows:
 </pre>
 * The `!variable` tag is a variable, named `provider-uri`, that is created to contain the URL Conjur uses to access the authentication resource.
 <pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">  - !variable
-    id: provider-uri
+      id: provider-uri
 </pre>
 * The `!group` tag defines the `apps` group and associates it with this policy.
 <pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">  - !group
-    id: apps
-    annotations:
-      description: Define hosts that authenticate with this authenticator
+      id: apps
+      annotations:
+        description: Define hosts that authenticate with this authenticator
 </pre>
 * The `!permit` tag grants members of the `apps` group `read, authenticate, update` permissions on this webservice resource.
 <pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">  - !permit
-    role: !group apps
-    privilege: [ read, authenticate, update ]
-    resource: !webservice
+      role: !group apps
+      privilege: [ read, authenticate, update ]
+      resource: !webservice
 </pre>
 
 The policy does not store data in the `provider-uri` variable. It just creates a variable to hold this data. This allows us to fill in the data later and change the data without changing the policy.
