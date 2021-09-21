@@ -1,6 +1,8 @@
 {
     "title": "Conjur RBAC Policy 101",
     "description": "Using Conjur to Manage Permissions in Serverless Applications",
+    "difficulty": "Beginner",
+    "time": "30 minutes",
     "icon": "fa-scroll-old",
     "details": {
       "steps": [
