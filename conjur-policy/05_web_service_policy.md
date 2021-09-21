@@ -4,20 +4,20 @@ The following webservice policy creates a resource that makes the Azure authenti
 - !policy
   id: conjur/authn-azure/AzureWS1
   body:
-  - !webservice
- 
-  - !variable
-    id: provider-uri
- 
-  - !group
-    id: apps
-    annotations:
-      description: Define hosts that authenticate with this authenticator
- 
-  - !permit
-    role: !group apps
-    privilege: [ read, authenticate, update ]
-    resource: !webservice
+    - !webservice
+  
+    - !variable
+      id: provider-uri
+  
+    - !group
+      id: apps
+      annotations:
+        description: Define hosts that authenticate with this authenticator
+  
+    - !permit
+      role: !group apps
+      privilege: [ read, authenticate, update ]
+      resource: !webservice
 ```
 
 Let's explore this from the top of the policy file:
@@ -36,23 +36,23 @@ Since the branch name does not start with a slash, you can store this policy wit
 Various tags define the policy as follows:
 
 * The `!webservice` tag defines that this is a webservice resource.
-<pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">  - !webservice
+<pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">    - !webservice
 </pre>
 * The `!variable` tag is a variable, named `provider-uri`, that is created to contain the URL Conjur uses to access the authentication resource.
-<pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">  - !variable
-      id: provider-uri
+<pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">    - !variable
+        id: provider-uri
 </pre>
 * The `!group` tag defines the `apps` group and associates it with this policy.
-<pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">  - !group
-      id: apps
-      annotations:
-        description: Define hosts that authenticate with this authenticator
+<pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">    - !group
+        id: apps
+        annotations:
+          description: Define hosts that authenticate with this authenticator
 </pre>
 * The `!permit` tag grants members of the `apps` group `read, authenticate, update` permissions on this webservice resource.
-<pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">  - !permit
-      role: !group apps
-      privilege: [ read, authenticate, update ]
-      resource: !webservice
+<pre class="file" data-filename="myWebservicePolicy.yml" data-target="append">    - !permit
+        role: !group apps
+        privilege: [ read, authenticate, update ]
+        resource: !webservice
 </pre>
 
 The policy does not store data in the `provider-uri` variable. It just creates a variable to hold this data. This allows us to fill in the data later and change the data without changing the policy.
