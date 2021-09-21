@@ -1,1 +1,1 @@
-Todo
+In the previous set of policies, the host and variable policies are directly connected. This works for small implementations, but as you create more hosts — and when the host resources represent machines instead of services — it becomes difficult to manage all the “host to variable” relationships. The layer policy decouples the variables and hosts so they can change independently.
