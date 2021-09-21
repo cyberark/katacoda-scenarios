@@ -3,7 +3,7 @@ We use the following resources to develop policies for serverless functions:
 * `Webservices` to associate a name with data needed to use the service
 * `Hosts` to associate a name with data needed to identify the host
 * `Layers` to model the “many-to-many” relationships between hosts and variables
-* `Groups` to define collections of users
+* `Groups` to define collections of hosts
 
 Policies define relationships using two statement types: `grant` statements that determine which roles have access to resources and `permit` statements that assign rights to roles.
 

@@ -21,7 +21,7 @@ The container running this image has a pre-configured Conjur CLI. We will be `do
 To ensure the CLI was pre-configured properly, let's execute a `list` command to see all the resources we have access to inside Conjur.
 
 ```
-docker-compose exec client conjur list
+docker exec root_client_1 conjur list
 ```{{execute}}
 
 If everything is authenticated properly, you should have received the following response:

@@ -65,8 +65,7 @@ As we saw in the webservice policy, the policy doesn’t store data in these var
 Let's load this policy using the following command:
 
 ```
-docker cp /root/policy/myVariablePolicy.yml root_client_1:/root
-docker-compose exec client conjur policy load root /root/myVariablePolicy.yml
+cat /root/policy/myVariablePolicy.yml | docker exec -i root_client_1 conjur policy load root -
 ```{{execute}}
 
 If it loaded successfully, you should receive the following response:
@@ -83,9 +82,9 @@ Loaded policy 'root'
 With the policy loaded, we have established two separate secret variables that are not initialized. We need to add a secret value to them to initialize and allow them to be executed.  We can use the Conjur CLI to do this.
 
 ```
-docker-compose exec client conjur variable values add secrets/endpoint endpointAddress
+docker exec root_client_1 conjur variable values add secrets/endpoint endpointAddress
 ```{{execute}}
 
 ```
-docker-compose exec client conjur variable values add secrets/authKey authenticationKeyValue
+docker exec root_client_1 conjur variable values add secrets/authKey authenticationKeyValue
 ```{{execute}}

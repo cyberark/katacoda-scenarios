@@ -23,7 +23,7 @@ The final step is to break the relationship between the variables and the hosts.
 The `!delete` tag removes the `secrets/consumers` group, breaking the relationship between the `azure-apps` group and the variables. We have to load this policy with the following `policy load` command to delete the group resource:
 
 ```
-docker-compose exec client conjur policy load --delete root myVariablePolicy.yml
+cat /root/policy/myVariablePolicy.yml | docker exec -i root_client_1 conjur policy load --delete root -
 ```{{execute}}
 
 With this structure in place, the group managing the host policy can add a newly-created host, and withhold variable access until the host resource is added to the layer policy. The group managing the variables policy can create a new variable when needed, knowing which services and hosts have access to it without searching all the host policies.

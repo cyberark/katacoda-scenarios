@@ -37,8 +37,7 @@ and the `!grant` tag associates the two hosts with this layer. The host names st
 Let's load this policy using the following command:
 
 ```
-docker cp /root/policy/myLayerPolicy.yml root_client_1:/root
-docker-compose exec client conjur policy load root /root/myLayerPolicy.yml
+cat /root/policy/myLayerPolicy.yml | docker exec -i root_client_1 conjur policy load root -
 ```{{execute}}
 
 If it loaded successfully, you should receive the following response:

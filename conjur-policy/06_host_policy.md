@@ -75,8 +75,7 @@ The second `!grant` tag is outside the policy. Note that this tag is not indente
 Let's load this policy using the following command:
 
 ```
-docker cp /root/policy/myHostPolicy.yml root_client_1:/root
-docker-compose exec client conjur policy load root /root/myHostPolicy.yml
+cat /root/policy/myHostPolicy.yml | docker exec -i root_client_1 conjur policy load root -
 ```{{execute}}
 
 If it loaded successfully, you should receive the following response:
