@@ -48,6 +48,6 @@ Loaded policy 'root'
 {
   "created_roles": {
   },
-  "version": 4
+  "version": 5
 }
 ```
