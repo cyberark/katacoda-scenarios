@@ -1,6 +1,6 @@
 The following webservice policy creates a resource that makes the Azure authenticator available to the host policy.
 
-```yaml
+```
 - !policy
   id: conjur/authn-azure/AzureWS1
   body:
@@ -67,4 +67,12 @@ docker-compose exec client conjur policy load root /root/myWebservicePolicy.yml
 ```{{execute}}
 
 If it loaded successfully, you should receive the following response:
-[RESERVED FOR RESPONSE]
+
+```
+Loaded policy 'root'
+{
+  "created_roles": {
+  },
+  "version": 2
+}
+```
