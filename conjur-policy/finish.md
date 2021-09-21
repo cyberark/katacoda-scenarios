@@ -1,3 +1,3 @@
 # Next Steps
 
-Todo
+Check out our new fully hosted interactive tutorials for [securing CI/CD pipelines](https://www.conjur.org/get-started/interactive/secure-ci-cd-pipelines/), [securing Ansible automation](https://www.conjur.org/get-started/interactive/secure-ansible-automation/), and [securing Kubernetes secrets](https://www.conjur.org/get-started/interactive/secure-kubernetes-secrets/). If you liked this tutorial then signup for our monthly DevOps security [newsletter](https://www.conjur.org/newsletter/) for developer community news, tutorials, and Conjur news.
