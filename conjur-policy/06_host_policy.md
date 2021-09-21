@@ -71,3 +71,31 @@ The first `!grant` tag is part of the policy `body`, so the resources it creates
 </pre>
 
 The second `!grant` tag is outside the policy. Note that this tag is not indented. It states that members of the `azure-apps` group are also members of the `conjur/authn-azure/AzureWS1/apps` group, which we created in the webservice policy in the previous step. This is important because it tells Conjur which webservice to use to authenticate these hosts. Also, the `azure-apps` name is required in the `member` tag because the `!grant` is outside the policy.
+
+Let's load this policy using the following command:
+
+```
+docker cp /root/policy/myHostPolicy.yml root_client_1:/root
+docker-compose exec client conjur policy load root /root/myHostPolicy.yml
+```{{execute}}
+
+If it loaded successfully, you should receive the following response:
+
+```
+Loaded policy 'root'
+{
+  "created_roles": {
+    "quick-start:host:azure-apps/ConjurDemoAccessFunctionSystemAssigned": {
+      "id": "quick-start:host:azure-apps/ConjurDemoAccessFunctionSystemAssigned",
+      "api_key": "3yrazk12pesw9erf8shq3bd7g1m13gggk6vbyepx3gktx8p2ny1n3v"
+    },
+    "quick-start:host:azure-apps/ConjurDemoAccessFunctionUserAssigned": {
+      "id": "quick-start:host:azure-apps/ConjurDemoAccessFunctionUserAssigned",
+      "api_key": "2vh2vyd3cdwqsmfr307z3bdq45b29vs7x1dhv1s2t1fbmy1j9zy30"
+    }
+  },
+  "version": 3
+}
+```
+
+Since this tutorial is utilizing the authn-azure webservice, the API Keys are not relevant and can be ignored.
