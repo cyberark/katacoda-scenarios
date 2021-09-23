@@ -62,7 +62,7 @@ The `annotations` tag in the `!group` definition holds documentation about the p
 Let's load this policy using the following command:
 
 ```
-cat /root/policy/myWebServicePolicy.yml | docker exec -i root_client_1 conjur policy load root -
+cat /root/policy/myWebservicePolicy.yml | docker exec -i root_client_1 conjur policy load root -
 ```{{execute}}
 
 If it loaded successfully, you should receive the following response:
