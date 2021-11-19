@@ -1,0 +1,45 @@
+{
+  "title": "Secretless Broker on OpenShift",
+  "icon": "fa-openshift",
+  "description": "Learn how to use Secretless Broker on OpenShift",
+  "details": {
+    "steps": [
+      { "title": "Overview", "text": "overview.md" },
+
+      { "title": "Start OpenShift", "text": "ocp-1.md" },
+      
+      { "title": "Typical OpenShift app", "text": "insecure-1.md" },
+      { "title": "Testing the app", "text": "insecure-2.md" },
+      { "title": "The Risk", "text": "insecure-3.md" },
+      
+      { "title": "Steps for Security Admin", "text": "sa-1.md" },
+      { "title": "Setup Conjur in OpenShift", "text": "sa-2.md" },
+      { "title": "Prepare Conjur Client", "text": "sa-3.md" },
+      { "title": "Enable Authenticator", "text": "sa-4.md" },
+      { "title": "Enrolling App", "text": "sa-5.md" },
+      { "title": "Secretless Broker Sidecar by Admin", "text": "sa-6.md" },
+
+      { "title": "Steps for Application Developer", "text": "ad-1.md" },
+      { "title": "Testing the App with Secretless Broker", "text": "ad-2.md" },
+      { "title": "Risk?", "text": "ad-3.md" }
+
+    ],
+    "intro": {
+      "text": "intro.md",
+      "code": "intro-fg.sh",
+      "credits": "https://www.conjur.org"
+   },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+    "dashboards": [{"name": "Console", "href": "https://console-openshift-console-[[HOST_SUBDOMAIN]]-443-[[KATACODA_HOST]].environments.katacoda.com"}],
+    "uilayout": "terminal-iframe"
+  },
+  "backend": {
+    "autoUpgrade": false,
+    "imageid": "openshift-4-7"
+  }
+}
