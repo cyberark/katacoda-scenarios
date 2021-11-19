@@ -7,6 +7,8 @@ To review it, execute: `cat ./secretless/developer-env.sh`{{execute}}
 Now let's create the yaml file to deploy the app with secretless broker.
 
 ```
+oc project testapp
+
 . ./secretless/developer-env.sh
 
 cat << EOL > secretless/testapp-secure.yml
@@ -122,4 +124,5 @@ EOL
 After generating the application manifest, deploy the application by running:
 ```
 oc apply -f secretless/testapp-secure.yml
+oc expose service/testapp-secure
 ```{{execute}}

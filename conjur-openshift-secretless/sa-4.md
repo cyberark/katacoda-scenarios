@@ -102,13 +102,13 @@ openssl req -x509 -new -nodes -key ca.key -sha1 -days 3650 -set_serial 0x0 -out 
 openssl x509 -in ca.cert -text -noout
 
 # Load variable values
-source conjur-authn.sh && curl -s -H "Authorization: Token token=\"${access_token}\"" \
+source conjur-authn.sh && curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
      -X POST --data "$(cat ca.key)" \
-     https://${CONJUR_URL}/secrets/default/conjur/authn-k8s/$AUTHENTICATOR_ID/ca/key
+     https://${CONJUR_URL}/secrets/default/variable/conjur%2Fauthn-k8s%2Fdev%2Fca%2Fkey | jq .
 
-source conjur-authn.sh && curl -s -H "Authorization: Token token=\"${access_token}\"" \
+source conjur-authn.sh && curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
      -X POST --data "$(cat ca.cert)" \
-     https://${CONJUR_URL}/secrets/default/conjur/authn-k8s/$AUTHENTICATOR_ID/ca/cert
+     https://${CONJUR_URL}/secrets/default/variable/conjur%2Fauthn-k8s%2Fdev%2Fca%2Fcert | jq .
 
 EOF
 ```{{execute}}
@@ -117,12 +117,12 @@ EOF
 
 To initialize the CA, execute: 
 ```
-source conjur/initialize_ca.sh
+source ./initialize_ca.sh
 ```{{execute}}
 
 ## Configure Conjur authenticators
 
-We have setup the conjur authenicators during Conjur setup!
+We have already configured the conjur authenicators during Conjur setup!
 
 To verify, execute 
 ```

@@ -13,7 +13,7 @@ The table below summarizes what we have set up so far:
 | Kubernetes authenticator name              | dev                     | ${AUTHENTICATOR_ID}            |
 | Conjur instance Kubernetes namespace       | conjur-server           | ${OSS_CONJUR_NAMESPACE}        |
 | Conjur instance Kubernetes service account | conjur-cluster          | ${CONJUR_SERVICE_ACCOUNT_NAME} |
-| Conjur URL                                 | https://conjur.demo.com | ${CONJUR_APPLIANCE_URL}        |
+| Conjur URL                                 | https://$CONJUR_URL     | ${CONJUR_APPLIANCE_URL}        |
 | Conjur Account                             | default                 | ${CONJUR_ACCOUNT}              |
 | Conjur Admin Login                         | admin                   | ${CONJUR_ADMIN_AUTHN_LOGIN}    |
 | Conjur Admin API Key                       | MySecretP@ss1           | ${CONJUR_ADMIN_API_KEY}        |
@@ -24,7 +24,30 @@ The table below summarizes what we have set up so far:
 ## env.sh
 
 A code snippet that contains all the variables defined in the table above has been prepared for you.
-To review it, execute `cat secretless/env.sh`{{execute}}
+To create it, execute :
+
+```
+cat > secretless/env.sh <<EOF
+APP_NAME=testapp-secure
+APP_NAMESPACE=testapp
+APP_SERVICE_ACCOUNT_NAME=testapp-secure-sa
+
+AUTHENTICATOR_ID="dev"
+
+APP_SECRETS_POLICY_BRANCH="app/testapp/secret"
+APP_SECRETS_READER_LAYER="app/testapp/layer"
+
+CONJUR_ACCOUNT="default"
+CONJUR_APPLIANCE_URL="https://conjur-oss.conjur-server.svc.cluster.local"
+
+CONJUR_ADMIN_AUTHN_LOGIN="admin"
+
+OSS_CONJUR_SERVICE_ACCOUNT_NAME="conjur-cluster"
+OSS_CONJUR_NAMESPACE="conjur-server"
+
+APP_AUTHENTICATION_CONTAINER_NAME="secretless"
+EOF
+```{{execute}}
 
 ## Add your application to Conjur policy
 You can define your host using a variety of Kubernetes resources.
@@ -62,7 +85,11 @@ You can review the generated policy by `cat secretless/app-policy.yml`{{execute}
 
 Let's load the generated policy by executing:
 ```
-conjur policy load root /root/secretless/app-policy.yml
+source conjur-authn.sh && \
+curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
+   -X PATCH -d "$(< secretless/app-policy.yml )" \
+   https://${CONJUR_URL}/policies/default/policy/root \
+   | jq .
 ```{{execute}}
 
 ## Grant the Conjur instance access to pods
@@ -122,7 +149,12 @@ oc create -f secretless/conjur-authenticator-role.yml
 
 
 ### Store the Conjur SSL certificate in a ConfigMap
-The Conjur SSL certificate is avaliable as `conjur-default.pem`
+Let's save Conjur SSL certificate is avaliable as `conjur-default.pem`
+
+```
+openssl s_client -showcerts -connect $CONJUR_URL:443 < /dev/null 2> /dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > conjur-default.pem
+```{{execute}}
+
 
 Use the following code snippet to store the Conjur SSL Certificate:
 ```

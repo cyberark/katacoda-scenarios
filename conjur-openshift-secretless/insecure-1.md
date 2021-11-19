@@ -55,4 +55,4 @@ testapp-insecure-846bdf65db-dbwsj   1/1     Running             0          71s
 ```
 
 Wait for both `testapp-db` & `testapp-app`to have `Running` status.
-Press `Ctrl-C` to stop
+Press `Ctrl-C` or `clear`{{execute interrupt}} to stop

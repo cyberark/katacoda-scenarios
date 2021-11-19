@@ -15,16 +15,25 @@ The following procedures are covered in this step:
 
 We'll create a layer, create 4 variables as secrets, and grant the layer to access all the variables.
 
-`conjur policy load root /root/secretless/testapp-policy.yml`{{execute}}
+```
+curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
+   -X PATCH -d "$(< secretless/testapp-policy.yml )" \
+   https://${CONJUR_URL}/policies/default/policy/root \
+   | jq . 
+```{{execute}}
 
-To review the changes, execute: `conjur list`{{execute}}
 
 Now let's save the secrets in Conjur
-`conjur variable values add app/testapp/secret/password "5b3e5f75cb3cdc725fe40318"`{{execute}}
 
-`conjur variable values add app/testapp/secret/username "test_app"`{{execute}}
-
-`conjur variable values add app/testapp/secret/host "testapp-db.testapp.svc.cluster.local"`{{execute}}
-
-`conjur variable values add app/testapp/secret/port "5432"`{{execute}}
-
+```
+source conjur-authn.sh && \
+curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
+     -X POST --data "5b3e5f75cb3cdc725fe40318" \
+     https://${CONJUR_URL}/secrets/default/variable/app%2Ftestapp%2Fsecret%2Fpassword | jq .  && \
+curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
+     -X POST --data "test_app" \
+     https://${CONJUR_URL}/secrets/default/variable/app%2Ftestapp%2Fsecret%2Fusername | jq .  && \
+curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
+     -X POST --data "testapp-db.testapp.svc.cluster.local" \
+     https://${CONJUR_URL}/secrets/default/variable/app%2Ftestapp%2Fsecret%2Fhost | jq .
+```{{execute}}
