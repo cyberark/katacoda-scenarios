@@ -24,7 +24,7 @@ The table below summarizes what we have set up so far:
 ## env.sh
 
 A code snippet that contains all the variables defined in the table above has been prepared for you.
-To review it, execute `cat secretless/env.sh`{{execute HOST1}}
+To review it, execute `cat secretless/env.sh`{{execute}}
 
 ## Add your application to Conjur policy
 You can define your host using a variety of Kubernetes resources.
@@ -56,14 +56,14 @@ cat << EOL > ./secretless/app-policy.yml
   - !host /conjur/authn-k8s/${AUTHENTICATOR_ID}/apps/service-account-based-app
   
 EOL
-```{{execute HOST1}}
+```{{execute}}
 
-You can review the generated policy by `cat secretless/app-policy.yml`{{execute HOST1}}
+You can review the generated policy by `cat secretless/app-policy.yml`{{execute}}
 
 Let's load the generated policy by executing:
 ```
 conjur policy load root /root/secretless/app-policy.yml
-```{{execute HOST1}}
+```{{execute}}
 
 ## Grant the Conjur instance access to pods
 
@@ -111,14 +111,14 @@ roleRef:
   name: conjur-authenticator
   apiGroup: rbac.authorization.k8s.io
 EOL
-```{{execute HOST1}}
+```{{execute}}
 
-You can review the generated policy by `cat secretless/conjur-authenticator-role.yml`{{execute HOST1}}
+You can review the generated policy by `cat secretless/conjur-authenticator-role.yml`{{execute}}
 
 Let's load the generated policy by executing:
 ```
 oc create -f secretless/conjur-authenticator-role.yml
-```{{execute HOST1}}
+```{{execute}}
 
 
 ### Store the Conjur SSL certificate in a ConfigMap
@@ -133,7 +133,7 @@ oc \
   create configmap \
   conjur-cert \
   --from-file=ssl-certificate="conjur-default.pem"
-```{{execute HOST1}}
+```{{execute}}
 
 ### Store the Secretless configuration in a ConfigMap
 Use the following bash script snippet to generate a Secretless configuration that defines how the service connector is setup
@@ -163,7 +163,7 @@ services:
         get: ${APP_SECRETS_POLICY_BRANCH}/password
       sslmode: disable
 EOL
-```{{execute HOST1}}
+```{{execute}}
 
 After generating the Secretless configuration, store it in a ConfigMap manifest by running the following:
 ```
@@ -174,4 +174,4 @@ oc \
   create configmap \
   secretless-config \
   --from-file=./secretless/secretless.yml
-```{{execute HOST1}}
+```{{execute}}

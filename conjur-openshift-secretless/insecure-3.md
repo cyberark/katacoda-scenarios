@@ -1,6 +1,6 @@
 When we deploy the application, the database secret is embedded in the configuration
 
-`cat insecure/app.yml`{{execute HOST1}}
+`cat insecure/app.yml`{{execute}}
 
 Can you find it? It's at the end of the configuration.
 ```

@@ -15,16 +15,16 @@ The following procedures are covered in this step:
 
 We'll create a layer, create 4 variables as secrets, and grant the layer to access all the variables.
 
-`conjur policy load root /root/secretless/testapp-policy.yml`{{execute HOST1}}
+`conjur policy load root /root/secretless/testapp-policy.yml`{{execute}}
 
-To review the changes, execute: `conjur list`{{execute HOST1}}
+To review the changes, execute: `conjur list`{{execute}}
 
 Now let's save the secrets in Conjur
-`conjur variable values add app/testapp/secret/password "5b3e5f75cb3cdc725fe40318"`{{execute HOST1}}
+`conjur variable values add app/testapp/secret/password "5b3e5f75cb3cdc725fe40318"`{{execute}}
 
-`conjur variable values add app/testapp/secret/username "test_app"`{{execute HOST1}}
+`conjur variable values add app/testapp/secret/username "test_app"`{{execute}}
 
-`conjur variable values add app/testapp/secret/host "testapp-db.testapp.svc.cluster.local"`{{execute HOST1}}
+`conjur variable values add app/testapp/secret/host "testapp-db.testapp.svc.cluster.local"`{{execute}}
 
-`conjur variable values add app/testapp/secret/port "5432"`{{execute HOST1}}
+`conjur variable values add app/testapp/secret/port "5432"`{{execute}}
 

@@ -5,7 +5,7 @@ Let's deploy an app.
 
 To create a project 
 
-`oc new-project testapp`{{execute HOST1}}
+`oc new-project testapp`{{execute}}
 
 
 ## Database
@@ -20,7 +20,7 @@ oc new-app \
     --image-stream="openshift/postgresql:9.6-el8" \
     --name=testapp-db
 oc expose service/testapp-db
-```{{execute HOST1}}
+```{{execute}}
 
 
 ## App
@@ -31,13 +31,13 @@ To deploy, execute:
 ```
 oc apply -f insecure/app.yml
 oc expose service/testapp-insecure
-```{{execute HOST1}}
+```{{execute}}
 
 Now the application has been installed.
 
 ```
 oc get pods -n testapp -w
-```{{execute HOST1}}
+```{{execute}}
 
 Let's wait for it to get started.
 ```

@@ -18,7 +18,7 @@ response=$(curl -k -s -X POST https://${CONJUR_URL}/authn/default/admin/authenti
 export access_token=$(echo -n $response | base64 | tr -d '\r\n')
 EOF
 chmod +x conjur-authn.sh
-```{{execute HOST1}}
+```{{execute}}
 
 
 ## Verify
@@ -27,4 +27,4 @@ To verify, we can execute the following REST API call to Conjur to get our ident
 
 ```
 source conjur-authn.sh && curl -k -s -H "Authorization: Token token=\"${access_token}\"" https://$CONJUR_URL/whoami
-```{{execute HOST1}}
+```{{execute}}

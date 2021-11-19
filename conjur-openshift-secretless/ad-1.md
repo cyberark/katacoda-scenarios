@@ -2,7 +2,7 @@
 ## You are now the application developer
 
 Let's have another set of environment variables, which does NOT contain any secrets for the developer.
-To review it, execute: `cat ./secretless/developer-env.sh`{{execute HOST1}}
+To review it, execute: `cat ./secretless/developer-env.sh`{{execute}}
 
 Now let's create the yaml file to deploy the app with secretless broker.
 
@@ -117,9 +117,9 @@ spec:
             name: secretless-config
             defaultMode: 420
 EOL
-```{{execute HOST1}}
+```{{execute}}
 
 After generating the application manifest, deploy the application by running:
 ```
 oc apply -f secretless/testapp-secure.yml
-```{{execute HOST1}}
+```{{execute}}

@@ -12,7 +12,7 @@ In this step, we'll preform the following steps to get Conjur up & running.
 To create a project for Conjur, execute:
 ```
 oc new-project conjur-server
-```{{execute HOST1}}
+```{{execute}}
 
 ## Install 
 
@@ -36,7 +36,7 @@ helm install \
    --set ssl.hostname=conjur-oss-conjur-server-2886795272-443-jago05.environments.katacoda.com \
    "$HELM_RELEASE" \
    https://github.com/cyberark/conjur-oss-helm-chart/releases/download/v2.0.4/conjur-oss-2.0.4.tgz
-```{{execute HOST1}}
+```{{execute}}
 
 
 ## Service
@@ -61,7 +61,7 @@ EOF
 
 oc create -f conjur-oss-katacoda.yaml 
 oc expose service/conjur-oss-katacoda
-```{{execute HOST1}}
+```{{execute}}
 
 The system should return a long message showing how to proceed.
 
@@ -76,7 +76,7 @@ HELM_RELEASE=conjur-oss
 POD_NAME=$(oc get pods --namespace "$CONJUR_NAMESPACE" \
             -l "app=conjur-oss" \
             -o jsonpath="{.items[0].metadata.name}")		
-```{{execute HOST1}}
+```{{execute}}
 
 if the following error occurs, please wait for 10 seconds and try the above command again
 ```
@@ -91,7 +91,7 @@ oc exec --namespace $CONJUR_NAMESPACE \
               $POD_NAME \
               --container=conjur-oss \
               -- conjurctl account create $CONJUR_ACCOUNT | tee admin.out
-```{{execute HOST1}}
+```{{execute}}
  
 If `error: unable to upgrade connection: container not found ("conjur-oss")` is returned, don't worry!
 It just means we're faster than the computer! &#129315;	
@@ -122,7 +122,7 @@ Let's save the URL of conjur as environment variable
 ```
 export CONJUR_URL=$(oc get route conjur-oss-katacoda -o jsonpath='{.spec.host}')
 echo $CONJUR_URL
-```{{execute HOST1}}
+```{{execute}}
 
 Great! Conjur is now up & running.
 Let's setup the Conjur client

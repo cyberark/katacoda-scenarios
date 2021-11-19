@@ -25,7 +25,7 @@ For details, please refer to the [Conjur official doc](https://docs.conjur.org/L
 
 At least one user needs write permission to load policy and variables into Conjur. This is standard Conjur policy that creates an administrative group of users for Conjur.
 A sample policy is prepared.
-To review it, execute: `cat conjur/policy_for_human_users.yml`{{execute HOST1}}
+To review it, execute: `cat conjur/policy_for_human_users.yml`{{execute}}
 
 ### Policy for authentication identities
 
@@ -34,13 +34,13 @@ The identities that will be used to authenticate and retrieve secrets from Conju
 For details about the different identities that can be used in this policy, see [Application Identity in OpenShift/Kubernetes](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_AppIdentity.htm)
 
 A sample policy is prepared.
-To review it, execute: `cat conjur/policy_for_authenticator_identities.yml`{{execute HOST1}}
+To review it, execute: `cat conjur/policy_for_authenticator_identities.yml`{{execute}}
 
 ### Policy for the Kubernetes authenticator service
 
 Conjur uses policy to allowlist the applications that have access to the Kubernetes authenticator and store the values necessary to create client certificates for mutual TLS
 A sample policy is prepared.
-To review it, execute: `cat conjur/policy_for_k8s_authenticator_service.yml`{{execute HOST1}}
+To review it, execute: `cat conjur/policy_for_k8s_authenticator_service.yml`{{execute}}
 
 
 ### Load Policies into Conjur
@@ -61,7 +61,7 @@ curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
    -X PATCH -d "$(< conjur/policy_for_k8s_authenticator_service.yml )" \
    https://${CONJUR_URL}/policies/default/policy/root \
    | jq . 
-```{{execute HOST1}}
+```{{execute}}
 
 
 ## Initalize CA
@@ -111,14 +111,14 @@ source conjur-authn.sh && curl -s -H "Authorization: Token token=\"${access_toke
      https://${CONJUR_URL}/secrets/default/conjur/authn-k8s/$AUTHENTICATOR_ID/ca/cert
 
 EOF
-```{{execute HOST1}}
+```{{execute}}
 
 
 
 To initialize the CA, execute: 
 ```
 source conjur/initialize_ca.sh
-```{{execute HOST1}}
+```{{execute}}
 
 ## Configure Conjur authenticators
 
@@ -130,4 +130,4 @@ export POD_NAME=$(oc get pods --namespace conjur-server \
    -l "app=conjur-oss" \
    -o jsonpath="{.items[0].metadata.name}")
 oc exec --namespace conjur-server  $POD_NAME  --container=conjur-oss -- env | grep CONJUR_AUTHENTICATORS
-```{{execute HOST1}}
+```{{execute}}

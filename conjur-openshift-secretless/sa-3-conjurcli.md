@@ -18,7 +18,7 @@ wget https://github.com/cyberark/conjur-api-python3/releases/download/v7.0.1/con
 tar xvf conjur-cli-rhel-7.tar.gz
 export PATH=$PATH:${PWD}
 cd ..
-```{{execute HOST1}}
+```{{execute}}
 
 In your own environment, you may wish to add it in shell script file, e.g. `~/.bashrc` or `~/.zshrc`
 
@@ -27,7 +27,7 @@ In your own environment, you may wish to add it in shell script file, e.g. `~/.b
 To initialize the client, execute:
 `conjur --insecure init --url https://$CONJUR_URL --account default`{{execute}}
 
-Trust this certificate: `yes`{{execute HOST1}}
+Trust this certificate: `yes`{{execute}}
 
 ```
 Wrote certificate to /root/conjur-default.pem
@@ -41,7 +41,7 @@ Remember the admin API key?  Don't worry, we can get it by executing `grep admin
 
 ```
 conjur --insecure login -i admin -p $(grep admin admin.out | cut -c20-)
-```{{execute HOST1}}
+```{{execute}}
 
 ## Reset Admin Password
 
@@ -51,15 +51,15 @@ Visit [CyberArk.com](https://cyberark.com) to learn how CyberArk can help you to
 Let's update our admin password to `MySecretP@ss1`
 ```
 conjur user update_password -p MySecretP@ss1
-```{{execute HOST1}}
+```{{execute}}
 
 Next, Log off & on again with the new password `MySecretP@ss1`
 ```
 conjur authn logout && \
 conjur authn login -u admin
-```{{execute HOST1}}
+```{{execute}}
 
-Please enter admin's password (it will not be echoed): `MySecretP@ss1`{{execute HOST1}}
+Please enter admin's password (it will not be echoed): `MySecretP@ss1`{{execute}}
 ```
 Logged in
 ```
