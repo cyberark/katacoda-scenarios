@@ -14,14 +14,13 @@ Let's setup a database for the application
 
 ```
 oc new-app \
-    -e POSTGRESQL_USER=test_app \
-    -e POSTGRESQL_PASSWORD=5b3e5f75cb3cdc725fe40318 \
-    -e POSTGRESQL_DATABASE=test_app \
-    --image-stream="openshift/postgresql:9.6-el8" \
-    --name=testapp-db
+ -e POSTGRESQL_USER=test_app \
+ -e POSTGRESQL_PASSWORD=5b3e5f75cb3cdc725fe40318 \
+ -e POSTGRESQL_DATABASE=test_app \
+ --image-stream="openshift/postgresql:9.6-el8" \
+ --name=testapp-db
 oc expose service/testapp-db
 ```{{execute}}
-
 
 ## App
 
