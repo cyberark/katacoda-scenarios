@@ -33,7 +33,7 @@ helm install \
    --set openshift.enabled=true \
    --set dataKey="$DATA_KEY" \
    --set authenticators="authn-k8s/dev" \
-   --set ssl.hostname=conjur-oss-katacoda-conjur-server.apps-crc.testing \
+   --set ssl.hostname=conjur-oss-conjur-server.apps-crc.testing \
    "$HELM_RELEASE" \
    https://github.com/cyberark/conjur-oss-helm-chart/releases/download/v2.0.4/conjur-oss-2.0.4.tgz
 ```{{execute}}
@@ -44,26 +44,7 @@ Depends on the environment, additional steps may be required to expose the Conju
 Below are the steps for Katacoda platform:
 
 ```
-cat > conjur-oss-katacoda.yaml <<EOF
-apiVersion: v1
-kind: Service
-metadata:
-  name: conjur-oss-katacoda
-  namespace: conjur-server
-spec:
-  selector:
-    app: conjur-oss
-  ports:
-    - protocol: TCP
-      port: 8888
-      targetPort: 8080
-EOF
-
-oc create -f conjur-oss-katacoda.yaml 
-oc expose service/conjur-oss-katacoda conjur-oss-katacoda-conjur-server.apps-crc.testing
-
-oc expose service/conjur-oss-ingress --hostname=conjur-oss-ingress-conjur-server.apps-crc.testing
-
+oc create route passthrough --service conjur-oss --hostname=conjur-oss-conjur-server.apps-crc.testing
 ```{{execute}}
 
 The system should return a long message showing how to proceed.
@@ -91,9 +72,9 @@ error: unable to upgrade connection: container not found ("conjur-oss")
 
 ```
 oc exec --namespace $CONJUR_NAMESPACE \
-              $POD_NAME \
-              --container=conjur-oss \
-              -- conjurctl account create $CONJUR_ACCOUNT | tee admin.out
+  $POD_NAME \
+  --container=conjur-oss \
+  -- conjurctl account create $CONJUR_ACCOUNT | tee admin.out
 ```{{execute}}
  
 If `error: unable to upgrade connection: container not found ("conjur-oss")` is returned, don't worry!
@@ -123,7 +104,7 @@ For your own environment, please keep them safe & secure.
 Let's save the URL of conjur as environment variable
 
 ```
-export CONJUR_URL=$(oc get route conjur-oss-katacoda -o jsonpath='{.spec.host}')
+export CONJUR_URL=$(oc get route conjur-oss -o jsonpath='{.spec.host}')
 echo $CONJUR_URL
 ```{{execute}}
 
