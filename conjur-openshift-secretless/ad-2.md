@@ -6,7 +6,6 @@ Now let's test the app again
 
 To check whether the app is started & get the endpoint of the service, execute:
 ```
-
 export URL=$(oc get route testapp-secure -o jsonpath='{.spec.host}'  ) && \
 curl $URL/pets
 ```{{execute}}

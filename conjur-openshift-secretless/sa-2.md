@@ -33,7 +33,7 @@ helm install \
    --set openshift.enabled=true \
    --set dataKey="$DATA_KEY" \
    --set authenticators="authn-k8s/dev" \
-   --set ssl.hostname=conjur-oss-conjur-server-2886795272-443-jago05.environments.katacoda.com \
+   --set ssl.hostname=conjur-oss-katacoda-conjur-server.apps-crc.testing \
    "$HELM_RELEASE" \
    https://github.com/cyberark/conjur-oss-helm-chart/releases/download/v2.0.4/conjur-oss-2.0.4.tgz
 ```{{execute}}
@@ -60,7 +60,10 @@ spec:
 EOF
 
 oc create -f conjur-oss-katacoda.yaml 
-oc expose service/conjur-oss-katacoda
+oc expose service/conjur-oss-katacoda conjur-oss-katacoda-conjur-server.apps-crc.testing
+
+oc expose service/conjur-oss-ingress --hostname=conjur-oss-ingress-conjur-server.apps-crc.testing
+
 ```{{execute}}
 
 The system should return a long message showing how to proceed.

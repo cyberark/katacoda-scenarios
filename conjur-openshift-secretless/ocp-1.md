@@ -34,18 +34,11 @@ use it.
 
 To login to the OpenShift cluster from the _Terminal_ run:
 
-``oc login -u developer -p developer``{{execute}}
+``oc login -u admin -p admin``{{execute}}
 
 This will log you in using the credentials:
 
-* **Username:** ``developer``
-* **Password:** ``developer``
+* **Username:** ``admin``
+* **Password:** ``admin``
 
 Use the same credentials to log into the web console.
-
-In order that you can still run commands from the command line as a cluster
-admin, the ``sudoer`` role has been enabled for the ``developer`` account.
-To execute a command as a cluster admin use the ``--as system:admin`` option
-to the command. For example:
-
-``oc get projects --as system:admin``{{execute}}
