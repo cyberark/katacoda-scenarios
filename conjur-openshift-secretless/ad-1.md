@@ -2,7 +2,19 @@
 ## You are now the application developer
 
 Let's have another set of environment variables, which does NOT contain any secrets for the developer.
-To review it, execute: `cat ./secretless/developer-env.sh`{{execute}}
+To create it, execute: 
+
+`
+cat > ./secretless/developer-env.sh <<EOF
+APP_NAME=testapp-secure
+APP_NAMESPACE=testapp
+APP_SERVICE_ACCOUNT_NAME=testapp-secure-sa
+
+CONJUR_ACCOUNT="default"
+CONJUR_APPLIANCE_URL="https://conjur-oss.conjur-server.svc.cluster.local"
+AUTHENTICATOR_ID="dev"
+EOF
+`{{execute}}
 
 Now let's create the yaml file to deploy the app with secretless broker.
 
