@@ -8,9 +8,9 @@ In this section, we'll configure the following items for setting up the Conjur c
 
 ## Alias for Conjur CLI
 
-Conjur CLI client can be either installed as [Ruby gem](https://docs.conjur.org/Latest/en/Content/Tools/CLI_Install_CLI.htm?tocpath=Setup%7C_____2#ruby-gem) or [Docker Container](https://docs.conjur.org/Latest/en/Content/Tools/CLI_Install_CLI.htm?tocpath=Setup%7C_____2#docker-container).
 
-In this tutorial, we will make use of shell scripts to communicate with Conjur via REST API
+In this tutorial, we will make use of the latest Conjur CLI client to communicate with Conjur via REST API
+For other clients, please be sure to check out our official doc.
 
 ```
 cat <<'EOF' >> conjur-authn.sh

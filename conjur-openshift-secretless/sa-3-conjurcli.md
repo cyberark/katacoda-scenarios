@@ -13,11 +13,9 @@ Conjur CLI client can be either installed as [Ruby gem](https://docs.conjur.org/
 In this tutorial, we will install the binary version
 
 ```
-mkdir conjur_cli && cd conjur_cli
 wget https://github.com/cyberark/conjur-api-python3/releases/download/v7.0.1/conjur-cli-rhel-7.tar.gz
 tar xvf conjur-cli-rhel-7.tar.gz
-export PATH=$PATH:${PWD}
-cd ..
+cp conjur /usr/local/bin
 ```{{execute}}
 
 In your own environment, you may wish to add it in shell script file, e.g. `~/.bashrc` or `~/.zshrc`
@@ -42,30 +40,3 @@ Remember the admin API key?  Don't worry, we can get it by executing `grep admin
 ```
 conjur --insecure login -i admin -p $(grep admin admin.out | cut -c20-)
 ```{{execute}}
-
-## Reset Admin Password
-
-This step is optional.   However, like any other systems, it is highly recommended to change the password regularly.
-Visit [CyberArk.com](https://cyberark.com) to learn how CyberArk can help you to develop and deploy effective identity security strategies.
-
-Let's update our admin password to `MySecretP@ss1`
-```
-conjur user update_password -p MySecretP@ss1
-```{{execute}}
-
-Next, Log off & on again with the new password `MySecretP@ss1`
-```
-conjur authn logout && \
-conjur authn login -u admin
-```{{execute}}
-
-Please enter admin's password (it will not be echoed): `MySecretP@ss1`{{execute}}
-```
-Logged in
-```
-
-Awesome.   Now the CLI is setup & admin password has been changed.
-
-
-
-

@@ -48,19 +48,9 @@ To review it, execute: `cat conjur/policy_for_k8s_authenticator_service.yml`{{ex
 To load all 3 policies into Conjur, execute:
 
 ```
-source conjur-authn.sh && \
-curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
-   -X PUT -d "$(< conjur/policy_for_human_users.yml )" \
-   https://${CONJUR_URL}/policies/default/policy/root \
-   | jq . && \
-curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
-   -X PATCH -d "$(< conjur/policy_for_authenticator_identities.yml )" \
-   https://${CONJUR_URL}/policies/default/policy/root \
-   | jq . && \
-curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
-   -X PATCH -d "$(< conjur/policy_for_k8s_authenticator_service.yml )" \
-   https://${CONJUR_URL}/policies/default/policy/root \
-   | jq . 
+conjur policy load -b root -f /root/conjur/policy_for_human_users.yml && \
+conjur policy load -b root -f /root/conjur/policy_for_authenticator_identities.yml && \
+conjur policy load -b root -f /root/conjur/policy_for_k8s_authenticator_service.yml 
 ```{{execute}}
 
 
