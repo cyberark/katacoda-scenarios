@@ -10,7 +10,7 @@
       
       { "title": "Typical OpenShift app", "text": "insecure-1.md" },
       { "title": "Testing the app", "text": "insecure-2.md" },
-      { "title": "The Risk", "text": "insecure-3.md" },
+      { "title": "The Risk", "text": "insecure-3-conjurcli.md" },
       
       { "title": "Steps for Security Admin", "text": "sa-1.md" },
       { "title": "Setup Conjur in OpenShift", "text": "sa-2.md" },

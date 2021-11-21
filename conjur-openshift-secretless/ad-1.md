@@ -4,25 +4,23 @@
 Let's have another set of environment variables, which does NOT contain any secrets for the developer.
 To create it, execute: 
 
-`
+```
 cat > ./secretless/developer-env.sh <<EOF
 APP_NAME=testapp-secure
 APP_NAMESPACE=testapp
 APP_SERVICE_ACCOUNT_NAME=testapp-secure-sa
 
 CONJUR_ACCOUNT="default"
-CONJUR_APPLIANCE_URL="https://conjur-oss.conjur-server.svc.cluster.local"
+CONJUR_APPLIANCE_URL="https://conjur-oss-conjur-server.apps-crc.testing"
 AUTHENTICATOR_ID="dev"
 EOF
-`{{execute}}
+```{{execute}}
 
 Now let's create the yaml file to deploy the app with secretless broker.
 
 ```
 oc project testapp
-
 . ./secretless/developer-env.sh
-
 cat << EOL > secretless/testapp-secure.yml
 ---
 apiVersion: v1
@@ -62,10 +60,6 @@ spec:
         app: "${APP_NAME}"
     spec:
       serviceAccountName: "${APP_SERVICE_ACCOUNT_NAME}"
-      hostAliases:
-      - ip: "10.105.68.126"
-        hostnames:
-        - "conjur.demo.com"
 
       containers:
       - image: cyberark/demo-app

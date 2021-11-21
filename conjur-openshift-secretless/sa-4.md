@@ -48,9 +48,9 @@ To review it, execute: `cat conjur/policy_for_k8s_authenticator_service.yml`{{ex
 To load all 3 policies into Conjur, execute:
 
 ```
-conjur policy load -b root -f /root/conjur/policy_for_human_users.yml && \
-conjur policy load -b root -f /root/conjur/policy_for_authenticator_identities.yml && \
-conjur policy load -b root -f /root/conjur/policy_for_k8s_authenticator_service.yml 
+conjur policy load -b root -f conjur/policy_for_human_users.yml && \
+conjur policy load -b root -f conjur/policy_for_authenticator_identities.yml && \
+conjur policy load -b root -f conjur/policy_for_k8s_authenticator_service.yml 
 ```{{execute}}
 
 
@@ -92,14 +92,8 @@ openssl req -x509 -new -nodes -key ca.key -sha1 -days 3650 -set_serial 0x0 -out 
 openssl x509 -in ca.cert -text -noout
 
 # Load variable values
-source conjur-authn.sh && curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
-     -X POST --data "$(cat ca.key)" \
-     https://${CONJUR_URL}/secrets/default/variable/conjur%2Fauthn-k8s%2Fdev%2Fca%2Fkey | jq .
-
-source conjur-authn.sh && curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
-     -X POST --data "$(cat ca.cert)" \
-     https://${CONJUR_URL}/secrets/default/variable/conjur%2Fauthn-k8s%2Fdev%2Fca%2Fcert | jq .
-
+conjur variable set -i conjur/authn-k8s/$AUTHENTICATOR_ID/ca/key -v "$(cat ca.key)"
+conjur variable set -i conjur/authn-k8s/$AUTHENTICATOR_ID/ca/cert -v "$(cat ca.cert)"
 EOF
 ```{{execute}}
 

@@ -38,7 +38,7 @@ APP_SECRETS_POLICY_BRANCH="app/testapp/secret"
 APP_SECRETS_READER_LAYER="app/testapp/layer"
 
 CONJUR_ACCOUNT="default"
-CONJUR_APPLIANCE_URL="https://conjur-oss.conjur-server.svc.cluster.local"
+CONJUR_APPLIANCE_URL="https://conjur-oss-conjur-server.svc.cluster.local"
 
 CONJUR_ADMIN_AUTHN_LOGIN="admin"
 
@@ -85,11 +85,7 @@ You can review the generated policy by `cat secretless/app-policy.yml`{{execute}
 
 Let's load the generated policy by executing:
 ```
-source conjur-authn.sh && \
-curl -k -s -H "Authorization: Token token=\"${access_token}\"" \
-   -X PATCH -d "$(< secretless/app-policy.yml )" \
-   https://${CONJUR_URL}/policies/default/policy/root \
-   | jq .
+conjur policy load -b root -f secretless/app-policy.yml
 ```{{execute}}
 
 ## Grant the Conjur instance access to pods
@@ -102,7 +98,6 @@ This Role and Role Binding combination grants the service account, assigned to t
 
 ```
 . ./secretless/env.sh
-
 cat << EOL > secretless/conjur-authenticator-role.yml
 ---
 kind: Role
@@ -149,12 +144,6 @@ oc create -f secretless/conjur-authenticator-role.yml
 
 
 ### Store the Conjur SSL certificate in a ConfigMap
-Let's save Conjur SSL certificate is avaliable as `conjur-default.pem`
-
-```
-openssl s_client -showcerts -connect $CONJUR_URL:443 < /dev/null 2> /dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > conjur-default.pem
-```{{execute}}
-
 
 Use the following code snippet to store the Conjur SSL Certificate:
 ```
@@ -164,7 +153,7 @@ oc \
   --namespace "${APP_NAMESPACE}" \
   create configmap \
   conjur-cert \
-  --from-file=ssl-certificate="conjur-default.pem"
+  --from-file=ssl-certificate="conjur.pem"
 ```{{execute}}
 
 ### Store the Secretless configuration in a ConfigMap
@@ -173,7 +162,6 @@ For more information, see the [Secretless documentation](https://docs.secretless
 
 ```
 . ./secretless/env.sh
-
 cat << EOL > ./secretless/secretless.yml
 version: "2"
 services:
@@ -200,7 +188,6 @@ EOL
 After generating the Secretless configuration, store it in a ConfigMap manifest by running the following:
 ```
 . ./secretless/env.sh
-
 oc \
   --namespace "${APP_NAMESPACE}" \
   create configmap \

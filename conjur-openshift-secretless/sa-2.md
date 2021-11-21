@@ -49,6 +49,26 @@ oc create route passthrough --service conjur-oss --hostname=conjur-oss-conjur-se
 
 The system should return a long message showing how to proceed.
 
+## Wait for Conjur to be ready
+
+
+```
+oc get pods -w
+```{{execute}}
+
+Let's wait for it to get started.
+```
+$ oc get pods -w
+NAME                        READY   STATUS              RESTARTS   AGE
+conjur-oss-947888d6-7b5zn   0/2     ContainerCreating   0          42s
+conjur-oss-postgres-0       1/1     Running             0          42s
+conjur-oss-947888d6-7b5zn   0/2     Running             0          78s
+conjur-oss-947888d6-7b5zn   1/2     Running             0          79s
+conjur-oss-947888d6-7b5zn   2/2     Running             0          103s
+```
+
+Wait for both `conjur-oss` & `conjur-oss-postgres`to have `Running` status.
+Press `Ctrl-C` or `clear`{{execute interrupt}} to stop
 
 ## Conjur Account
 
