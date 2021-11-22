@@ -21,7 +21,10 @@
 
       { "title": "Steps for Application Developer", "text": "ad-1.md" },
       { "title": "Testing the App with Secretless Broker", "text": "ad-2.md" },
-      { "title": "Risk?", "text": "ad-3.md" }
+      { "title": "Risk?", "text": "ad-3.md" },
+
+      { "title": "Bonus - More ways to secure apps", "text": "bonus-1.md" },
+      { "title": "Bonus - Policy for authenticator ", "text": "bonus-2.md" }
 
     ],
     "intro": {
@@ -35,7 +38,7 @@
   },
   "environment": {
     "showdashboard": true,
-    "dashboards": [{"name": "Console", "href": "https://console-openshift-console-[[HOST_SUBDOMAIN]]-443-[[KATACODA_HOST]].environments.katacoda.com"}],
+    "dashboards": [{"name": "OpenShift Console", "href": "https://console-openshift-console-[[HOST_SUBDOMAIN]]-443-[[KATACODA_HOST]].environments.katacoda.com"}],
     "uilayout": "terminal-iframe"
   },
   "backend": {
