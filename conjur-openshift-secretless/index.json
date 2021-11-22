@@ -24,7 +24,8 @@
       { "title": "Risk?", "text": "ad-3.md" },
 
       { "title": "Bonus - More ways to secure apps", "text": "bonus-1.md" },
-      { "title": "Bonus - Policy for authenticator ", "text": "bonus-2.md" }
+      { "title": "Bonus - Policy for authenticator ", "text": "bonus-2.md" },
+      { "title": "Bonus - Authenticator as Init Container ", "text": "bonus-3.md" }
 
     ],
     "intro": {
