@@ -2,7 +2,7 @@
 Now let's test the app again
 
 
-## Get the URL
+## Test the app
 
 To check whether the app is started & get the endpoint of the service, execute:
 ```

@@ -34,6 +34,8 @@ cat > secretless/app-policy.yml<<EOF
   role: !layer app/testapp/layer
   members:
   - !host /conjur/authn-k8s/dev/apps/service-account-based-app
+  - !host /conjur/authn-k8s/dev/apps/service-account-based-app-using-authenticator
+
 EOF
 ```{{execute}}
 
@@ -42,3 +44,8 @@ To update the policy, execute:
 ```
 conjur policy load -b root -f secretless/app-policy.yml
 ```{{execute}}
+
+
+## Do you know?
+
+Conjur supports other Kubernetes resources/objects as app identities, including `Namespace`, `Deployment`, `DeploymentConfig`, `StatefulSet` , etc.   Please refer to https://docs.cyberark.com/Product-Doc/OnlineHelp/AAM-DAP/Latest/en/Content/Integrations/k8s-ocp/k8s-app-identity.htm for more details.

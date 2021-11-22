@@ -1,5 +1,5 @@
 
-## Do you know
+## Do you know?
 
 Apart from secretless broker, there're a few more ways to secure secrets in apps on OpenShift by Conjur:
 
