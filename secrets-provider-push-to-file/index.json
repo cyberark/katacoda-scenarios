@@ -1,0 +1,45 @@
+{
+  "title": "Secrets Provider Push-to-File Quick Start Guide",
+  "description": "Deploy an application that uses Secrets Provider in Push-to-File mode.",
+  "difficulty": "Beginner",
+  "time": "15 minutes",
+  "details": {
+    "steps": [
+      { "title": "Launch minikube", "text": "1_launch_minikube.md" },
+
+      { "title": "Persona: Conjur Admin", "text": "2_steps_for_conjur_admin.md" },
+      { "title": "Deploy Conjur Open Source", "text": "3_deploy_conjur.md" },
+      { "title": "Configure the Kubernetes Authenticator", "text": "4_configure_authenticator.md" },
+      { "title": "Install the Conjur Configuration Cluster Preparation Helm charts", "text": "5_cluster_prep.md" },
+
+      { "title": "Persona: App Developer", "text": "6_steps_for_developer.md" },
+      { "title": "Install the Conjur Configuration Namespace Preparation Helm charts", "text": "7_namespace_prep.md" },
+      { "title": "Deploy a Postgres Backend", "text": "8_deploy_backend.md" },
+      { "title": "Deploy the Application with a Secrets Provider Init Container", "text": "9_deploy_sp_app.md" },
+      { "title": "Confirm the Application can Access Secrets", "text": "10_confirm_deployment.md" }
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "get-conjur-cert.sh", "target": "/usr/local/bin/", "chmod": "+x"},
+        {"file": "app_manifest.yml", "target": "/manifests/"},
+        {"file": "curl_manifest.yml", "target": "/manifests/"},
+        {"file": "setup_k8s_authn.yml", "target": "/policy/"},
+        {"file": "create_host.yml", "target": "/policy/"},
+        {"file": "app_secrets.yml", "target": "/policy/"},
+        {"file": "grants.yml", "target": "/policy/"}
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "minikube"
+  }
+}

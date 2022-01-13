@@ -1,0 +1,16 @@
+- !policy
+  id: conjur/authn-k8s/quickstart-cluster
+  body:
+    - !webservice
+
+    - !variable ca/key
+    - !variable ca/cert
+
+    - !group consumers
+    - !group apps
+
+    - !permit
+      resource: !webservice
+      privilege: [ read, authenticate ]
+      role: !group consumers
+

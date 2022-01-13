@@ -1,0 +1,104 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: quickstart-app
+  labels:
+    app: quickstart-app
+spec:
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: quickstart-app
+  type: NodePort
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: quickstart-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: quickstart-app
+  name: quickstart-app
+  namespace: quickstart-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quickstart-app
+  template:
+    metadata:
+      labels:
+        app: quickstart-app
+      annotations:
+        conjur.org/authn-identity: host/conjur/authn-k8s/quickstart-cluster/apps/quickstart-app
+        conjur.org/container-mode: init
+        conjur.org/secrets-destination: file
+        conjur.org/conjur-secrets.test-app: |
+          - DB_PLATFORM: quickstart-app-resources/platform
+          - DB_URL: quickstart-app-resources/url
+          - DB_USERNAME: quickstart-app-resources/username
+          - DB_PASSWORD: quickstart-app-resources/password
+        conjur.org/secret-file-path.test-app: "./secrets-file"
+        conjur.org/secret-file-format.test-app: "bash"
+    spec:
+      serviceAccountName: quickstart-app
+      containers:
+      - image: cyberark/demo-app:latest
+        imagePullPolicy: Always
+        name: demo-app
+        command: ["/bin/bash"]
+        args: ["-c", "source /opt/secrets/conjur/secrets-file; java -jar /app.jar"]
+        ports:
+        - name: http
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /pets
+            port: http
+          initialDelaySeconds: 15
+          timeoutSeconds: 5
+        volumeMounts:
+          - name: conjur-secrets
+            mountPath: /opt/secrets/conjur
+            readOnly: true
+      initContainers:
+      - name: cyberark-secrets-provider-for-k8s
+        image: 'cyberark/secrets-provider-for-k8s:latest'
+        imagePullPolicy: Always
+        env:
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: MY_POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        envFrom:
+        - configMapRef:
+            name: conjur-connect
+        volumeMounts:
+          - name: podinfo
+            mountPath: /conjur/podinfo
+          - name: conjur-secrets
+            mountPath: /conjur/secrets
+          - name: conjur-templates
+            mountPath: /conjur/templates
+      volumes:
+        - name: podinfo
+          downwardAPI:
+            items:
+              - path: "annotations"
+                fieldRef:
+                  fieldPath: metadata.annotations
+        - name: conjur-secrets
+          emptyDir:
+            medium: Memory
+        - name: conjur-templates
+          emptyDir:
+            medium: Memory
