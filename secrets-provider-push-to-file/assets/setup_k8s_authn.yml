@@ -13,4 +13,3 @@
       resource: !webservice
       privilege: [ read, authenticate ]
       role: !group consumers
-

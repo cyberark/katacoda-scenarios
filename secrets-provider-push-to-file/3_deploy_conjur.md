@@ -21,7 +21,19 @@ helm install -n conjur-oss --create-namespace --wait --timeout 300s \
   conjur-deployment cyberark/conjur-oss
 ```{{execute}}
 
-Then, retrieve the API key for user `admin`:
+When the terminal outputs the following, Conjur has been successfully deployed,
+and we can continue:
+
+```
+ . . .
+
+4. Next Steps
+  - Go through the Conjur Tutorials: https://www.conjur.org/tutorials/
+  - View Conjur's API Documentation: https://www.conjur.org/api.html
+$
+```
+
+Now, retrieve the API key for user `admin`:
 
 ```
 CONJUR_POD="$(kubectl get pods -n conjur-oss | grep conjur-oss | awk '{print $1}')"

@@ -2,16 +2,8 @@ Next, we will enable and configure the Conjur Kubernetes Authenticator
 (authn-k8s), and establish an identity in Conjur to authenticate the
 application.
 
-The following commands will:
-- create an authn-k8s instance, `conjur/authn-k8s/quickstart-cluster`,
-- create a host identity, `conjur/authn-k8s/quickstart-cluster/apps/quickstart-app`,
-  to represent the demo application,
-- create secrets in Conjur, that the demo application will use to connect to a
-  database,
-- grant the host identity privilege to access secret values and authenticate
-  with Conjur.
-
-Deploy a Conjur CLI pod to the recently created Conjur namespace:
+First, deploy a Conjur CLI pod to the Conjur namespace. We will use the CLI to
+log into Conjur and run commands to set up the authenticator.
 
 ```
 cat <<EOF | kubectl apply -n conjur-oss -f -
@@ -68,9 +60,30 @@ yes yes | conjur init -u https://conjur-deployment-conjur-oss.conjur-oss.svc.clu
 conjur authn login -u admin -p $ADMIN_API_KEY
 ```{{execute}}
 
-Load the Policy to setup the Kubernetes Authenticator. For more information on
-the policy included here, see the documentation for
+Now that the CLI is authenticated, we need to load the following policy to
+create an authn-k8s instance.
+- `setup_k8s_authn.yml`
+  - creates an authn-k8s webservice, `quickstart-cluster`
+  - creates a group, `consumers`, with permission to authenticate to the
+    webservice
+- `create_host.yml`
+  - creates a host identity to represent the demo application, `quickstart-app`
+  - creates a group `apps` and grants the host `quickstart-app` as a member
+- `app_secrets.yml`
+  - creates a group of variables, `springboot-creds`, representing credentials
+    to for the quickstart app's database
+  - creates a group with permission to read these variables,
+    `quickstart-app-resources`
+- `grants.yml`
+  - grants `apps` group (and by extension the host `quickstart-app`) as a member
+    of groups `consumers` and `quickstart-app-resources`, allowing the host
+    permission to authenticate to the webservice and read the database
+    credentials
+
+For more information on these policy files, see the documentation for
 [Enabling the Kubernetes Authenticator](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_deployApplicationCluster.htm?tocpath=Integrations%7COpenShift%252C%20Kubernetes%7C_____4).
+
+Load the policy files to create and configure authn-k8s:
 
 ```
 conjur policy load root /policy/setup_k8s_authn.yml
