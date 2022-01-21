@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: curl-pod
+  labels:
+    name: curl-pod
+spec:
+  containers:
+  - name: busyboxplus
+    image: radial/busyboxplus:curl
+    imagePullPolicy: Always
+    command: ["sh", "-c", "tail -f /dev/null"]

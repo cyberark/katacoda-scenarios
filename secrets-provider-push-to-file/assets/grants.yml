@@ -1,0 +1,8 @@
+- !grant
+  role: !group conjur/authn-k8s/quickstart-cluster/consumers
+  members:
+    - !group conjur/authn-k8s/quickstart-cluster/apps
+- !grant
+  role: !group quickstart-app-resources
+  members:
+    - !host conjur/authn-k8s/quickstart-cluster/apps/quickstart-app
