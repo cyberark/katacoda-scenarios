@@ -4,6 +4,8 @@ This quick-start will serve as a guide for deploying an application that uses
 CyberArk's Secrets Provider in Push-to-File mode, where secrets are provided to
 the consuming application through a shared volume in a Kubernetes cluster.
 
+![Quick-Start Architecture](https://raw.githubusercontent.com/cyberark/katacoda-scenarios/main/secrets-provider-push-to-file/resources/p2f-quickstart-diagram.png)
+
 For more information, see the
 [Secrets Provider GitHub repository](https://github.com/cyberark/secrets-provider-for-k8s).
 
